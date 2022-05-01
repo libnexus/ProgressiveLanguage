@@ -1,0 +1,52 @@
+package ProgLang.Lexer;
+
+
+public enum TT {
+
+    STRING,
+    INTEGER,
+    FLOAT,
+    BINARY,
+
+    R_BRACES_O,
+    R_BRACES_C,
+    C_BRACES_O,
+    C_BRACES_C,
+    S_BRACES_O,
+    S_BRACES_C,
+
+    ADDITION,
+    SUBTRACTION,
+    MULTIPLICATION,
+    DIVISION,
+    MODULUS,
+    EXPONENTIATION,
+    FLOOR,
+
+    BOOL_AND,
+    BOOL_OR,
+    BOOL_EQUALS,
+    BOOL_NOT_EQUALS,
+    BOOL_NOT,
+    BOOL_LESS_THAN,
+    BOOL_LESS_THAN_EQUALS,
+    BOOL_MORE_THAN,
+    BOOL_MORE_THAN_EQUALS,
+    BOOL_IS,
+    BOOL_IS_NOT,
+    BOOL_IS_IN,
+    BOOL_IS_NOT_IN,
+
+    BIT_AND,
+    BIT_OR,
+    BIT_XOR,
+    BIT_L_SHIFT,
+    BIT_R_SHIFT,
+
+    KEYWORD,
+    IDENTIFIER,
+
+    NEW_LINE,
+    BEGIN,
+    END,
+}
