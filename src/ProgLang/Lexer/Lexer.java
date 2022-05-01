@@ -52,6 +52,12 @@ public class Lexer {
             } else if (text.startsWith("/")) {
                 tokens.add(new Token(TT.DIVISION, "/", column));
                 column++;
+            } else if (text.startsWith("(")) {
+                tokens.add(new Token(TT.R_BRACES_O, "(", column));
+                column++;
+            } else if (text.startsWith(")")) {
+                tokens.add(new Token(TT.R_BRACES_C, ")", column));
+                column++;
             } else {
                 throw new ProgError("Can't recognise current expression " + text);
             }

@@ -1,6 +1,7 @@
 package Main;
 
 import ProgLang.Cache;
+import ProgLang.Context;
 import ProgLang.Error.ProgError;
 import ProgLang.Interpreter;
 import ProgLang.Lexer.Lexer;
@@ -16,6 +17,7 @@ public class Test {
     public static ProgBaseInstance timeExecution(String file) throws ProgError {
         var a = System.currentTimeMillis();
 
+        Context context = new Context();
         Interpreter interpreter = new Interpreter();
         ArrayList<Token> tokens = Lexer.tokenize(file);
 
@@ -37,7 +39,6 @@ public class Test {
     }
 
     public static void main(String[] args) throws ProgError {
-        Interpreter interpreter = new Interpreter();
         Scanner in = new Scanner(System.in);
         String input;
         while (true) {

@@ -3,6 +3,16 @@ package ProgLang.Object;
 import ProgLang.Error.ProgError;
 
 public abstract class ProgBaseInstance {
+    private static int cursorId = 0;
+
+    public final int objectId;
+    private final Symbols attributes = new Symbols("");
+
+    public ProgBaseInstance() {
+        cursorId++;
+        this.objectId = cursorId;
+    }
+
     public String stringRepresent() throws ProgError {
         throw new ProgError("Instance of type " + this.getClass().getName() + " has no default case for 0.1");
     }

@@ -39,6 +39,20 @@ public class Parser {
         this.advance(1);
     }
 
+    private Token eat(String errorMessage, TT type) throws ProgError {
+        if (this.getCurrentToken().matches(type)) {
+            var token = this.getCurrentToken();
+            this.advance();
+            return token;
+        } else {
+            throw new ProgError(errorMessage);
+        }
+    }
+
+    private Token eat(TT type) throws ProgError {
+        return this.eat("Expected token of type: <" + type.toString() + "> not <" + this.getCurrentToken().type().toString() + ">", type);
+    }
+
     public ProgNode parseProgram() throws ProgError {
         return this.parseStatements();
     }
@@ -177,7 +191,12 @@ public class Parser {
     public ProgNode parseAtomicFactor() throws ProgError {
         var token = this.getCurrentToken();
 
-        if (token.matches(TT.INTEGER)) {
+        if (token.matches(TT.R_BRACES_O)) {
+            this.advance();
+            var expression = this.parseExpression();
+            this.eat("Expected bracketed expression to end with ')'", TT.R_BRACES_C);
+            return expression;
+        } else if (token.matches(TT.INTEGER)) {
             this.advance();
             return new NodeIntegerLiteral(Integer.parseInt(token.value()));
         } else if (token.matches(TT.FLOAT)) {
